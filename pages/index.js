@@ -1,65 +1,64 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from "next/link";
+import Image from "next/image";
 
-export default function Home() {
+export const Product = ({ img, name, price }) => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+    <div className="bg-white p-2 flex flex-col">
+      <Image
+        src={img}
+        width={300}
+        height={300}
+        className="w-full object-cover"
+      />
+      <div className="mt-3 flex-1 mb-5">
+        <span className="font-bold block text-gray-700">{name}</span>
+        <span className="text-gray-600">{price}</span>
+      </div>
+      <Link href={`https://wa.me/6285377864911?text=Saya mau pesan ${name}`}>
+        <a className="mt-auto block py-1 px-3 bg-blue-600 text-white font-bold mt-6 text-center">
+          Beli
         </a>
-      </footer>
+      </Link>
     </div>
-  )
+  );
+};
+
+export default function App() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <div className="bg-blue-500 px-5 lg:px-20 h-16 flex items-center shadow-md mb-6">
+        <h1>
+          <Link href="/">
+            <a
+              className="text-white font-bold text-lg"
+              style={{ fontFamily: "Montserrat" }}
+            >
+              DDR3 Store
+            </a>
+          </Link>
+        </h1>
+      </div>
+      <div className="px-5 lg:px-20 grid grid-flow-row grid-cols-2 lg:grid-cols-4 gap-10">
+        <Product
+          name="Sport Jogging Sneakers"
+          price="Rp. 150,000"
+          img="/1.jpg"
+        />
+        <Product
+          name="Sneaker Casual Running"
+          price="Rp. 179,000"
+          img="/2.jpg"
+        />
+        <Product name="Sepatu Kets Sneaker" price="Rp. 160,000" img="/3.jpg" />
+        <Product
+          name="Sepatu Sneakers NEO WARM ZONE"
+          price="Rp. 200,000"
+          img="/4.jpg"
+        />
+      </div>
+      <div className="mt-auto py-5 lg:px-20 bg-gray-200 text-center py-5">
+        &copy;2021 DDR3 Store
+      </div>
+    </div>
+  );
 }
