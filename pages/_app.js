@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
           rel="stylesheet"
         />
-        <title>DDR3 Store</title>
+        <title>Cyro Store</title>
       </Head>
       <div className="min-h-screen bg-gray-100">
         <Component {...pageProps} />
